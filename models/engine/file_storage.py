@@ -5,7 +5,6 @@ Module for FileStorage class
 
 import json
 import os
-from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -24,20 +23,19 @@ class FileStorage:
 
     def save(self):
         """Serializes __objects to the JSON file"""
-        serialized_dict = {}
+        data = {}
         for key, value in self.__objects.items():
-            serialized_dict[key] = value.to_dict()
+            data[key] = value.to_dict()
         with open(self.__file_path, 'w', encoding='utf-8') as file:
-            json.dump(serialized_dict, file)
+            json.dump(data, file)
 
     def reload(self):
         """Deserializes the JSON file to __objects."""
-        if os.path.exists(self.__file_path):
+        if exists(self.__file_path):
             with open(self.__file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
-                for key, value in data.items():
-                    class_name, obj_id = key.split(".")
-                    obj = eval(class_name)(**value)
-                    self.__objects[key] = obj
-        else:
-            return
+            for key, value in data.items():
+                class_name, obj_id = key.split('.')
+                class_obj = globals()[class_name]
+                obj = class_obj(**value)
+                self.__objects[key] = obj
