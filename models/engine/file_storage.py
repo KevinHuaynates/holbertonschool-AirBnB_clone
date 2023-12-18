@@ -1,39 +1,36 @@
 #!/usr/bin/python3
-"""File Storage module"""
+"""This module defines a class FileStorage."""
 import json
-from models.base_model import BaseModel
-
+from os.path import isfile
 
 class FileStorage:
-    """FileStorage class"""
-
+    """Serializes instances to a JSON file and deserializes JSON file to instances."""
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """Returns the dictionary __objects"""
+        """Returns the dictionary __objects."""
         return FileStorage.__objects
-
+    
     def new(self, obj):
-        """Sets in __objects the obj with key <obj class name>.id"""
+        """Sets in __objects the obj with key <obj class name>.id."""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """Serializes __objects to the JSON file (path: __file_path)"""
-        serialized_objects = {}
-        for key, obj in FileStorage.__objects.items():
-            serialized_objects[key] = obj.to_dict()
+        """Serializes __objects to the JSON file (path: __file_path)."""
+        serialized_objects = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
         with open(FileStorage.__file_path, 'w', encoding='utf-8') as file:
             json.dump(serialized_objects, file)
 
     def reload(self):
-        """Deserializes the JSON file to __objects"""
+        """Deserializes the JSON file to __objects."""
         try:
-            from models import classes
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
-                serialized_objects = json.load(file)
-                self.__objects = {key: classes[class_name](**value)
-                                  for key, (class_name, value) in serialized_objects.items()}
+            import models
+            if isfile(FileStorage.__file_path):
+                with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
+                    serialized_objects = json.load(file)
+                    self.__objects = {key: models.classes[class_name](**value)
+                                      for key, (class_name, value) in serialized_objects.items()}
         except FileNotFoundError:
             pass
