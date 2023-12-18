@@ -30,7 +30,11 @@ class FileStorage:
             if isfile(FileStorage.__file_path):
                 with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
                     serialized_objects = json.load(file)
-                    self.__objects = {key: models.classes[value['__class__']](**value)
-                                      for key, value in serialized_objects.items()}
+                    for key, value in serialized_objects.items():
+                        class_name = value['__class__']
+                        cls = BaseModel
+                        if class_name in models.classes:
+                            cls = models.classes[class_name]
+                        self.__objects[key] = cls(**value)
         except (FileNotFoundError, ImportError):
             pass
