@@ -27,6 +27,11 @@ class BaseModel:
 
     def __str__(self):
         """Updates the updated_at attribute and saves to the storage engine"""
+        return "[{}] ({}) {}".format(
+            self.__class__.__name__, self.id, self.__dict__)
+
+    def save(self):
+        """Updates the updated_at attribute and saves"""
         self.updated_at = datetime.now()
         models.storage.save()
 

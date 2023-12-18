@@ -4,7 +4,7 @@ Module for FileStorage class
 """
 
 import json
-import os
+import models
 
 
 class FileStorage:
@@ -23,19 +23,20 @@ class FileStorage:
 
     def save(self):
         """Serializes __objects to the JSON file"""
-        data = {}
+        new_dict = {}
         for key, value in self.__objects.items():
-            data[key] = value.to_dict()
-        with open(self.__file_path, 'w', encoding='utf-8') as file:
-            json.dump(data, file)
+            new_dict[key] = value.to_dict()
+        with open(self.__file_path, mode="w", encoding="utf-8") as f:
+            json.dump(new_dict, f)
 
     def reload(self):
         """Deserializes the JSON file to __objects."""
-        if exists(self.__file_path):
-            with open(self.__file_path, 'r', encoding='utf-8') as file:
-                data = json.load(file)
-            for key, value in data.items():
-                class_name, obj_id = key.split('.')
-                class_obj = globals()[class_name]
-                obj = class_obj(**value)
-                self.__objects[key] = obj
+        try:
+            with open(self.__file_path, mode="r", encoding="utf-8") as f:
+                new_dict = json.load(f)
+                for key, value in new_dict.items():
+                    class_name, obj_id = key.split('.')
+                    cls = models.classes[class_name]
+                    self.__objects[key] = cls(**value)
+        except FileNotFoundError:
+            pass
