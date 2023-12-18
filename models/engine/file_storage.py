@@ -36,5 +36,5 @@ class FileStorage:
                         if class_name in models.classes:
                             cls = models.classes[class_name]
                         self.__objects[key] = cls(**value)
-        except (FileNotFoundError, ImportError):
+        except (FileNotFoundError, ImportError, KeyError):
             pass
