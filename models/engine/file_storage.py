@@ -32,5 +32,5 @@ class FileStorage:
                     serialized_objects = json.load(file)
                     self.__objects = {key: models.classes[value['__class__']](**value)
                                       for key, value in serialized_objects.items()}
-        except FileNotFoundError:
+        except (FileNotFoundError, ImportError):
             pass
