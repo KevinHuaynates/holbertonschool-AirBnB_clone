@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """
-Module : contains the entry point of the command interpreter.
-"""
+This module contains the HBNBCommand class, a command interpreter for the AirBnB project.
 
+It provides a custom prompt, handles quit and EOF commands to exit the console,
+and includes a help command.
+"""
 import cmd
 
 """
@@ -10,12 +12,12 @@ This module contains the entry point of the command interpreter.
 """
 
 class HBNBCommand(cmd.Cmd):
-"""This class defines the command interpreter"""
+    """This class defines the command interpreter"""
 
     prompt = '(hbnb) '
 
     def emptyline(self):
-    """Do nothing on an empty line + ENTER.
+        """Do nothing on an empty line + ENTER.
         """
         pass
 
