@@ -5,7 +5,7 @@ This module contains the BaseModel class for the AirBnB project.
 
 import uuid
 from datetime import datetime
-from models.engine.file_storage import FileStorage  # Update this line
+from models.engine.file_storage import FileStorage
 
 class BaseModel:
     """
