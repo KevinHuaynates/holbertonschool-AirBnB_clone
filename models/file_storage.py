@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-"""This module defines a class FileStorage to manage serialization and
-deserialization of instances to JSON format.
+"""Module define una class FileStorage para gestionar instancias a formato JSON
 """
 import json
 from models.base_model import BaseModel
 
 
 class FileStorage:
-    """This class manages serialization"""
+    """Esta class gestiona la serialización."""
+    
     __file_path = "file.json"
     __objects = {}
 

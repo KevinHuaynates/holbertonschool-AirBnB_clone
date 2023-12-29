@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """
-This module contains the HBNBCommand class, a command interpreter for the AirBnB project.
+Module contiene 'HBNBCommand' class, un comando interprete de AirBnB project.
 
-It provides a custom prompt, handles quit and EOF commands to exit the console,
-and includes a help command.
 """
 
 import cmd
@@ -13,51 +11,51 @@ from models.user import User
 
 HBNB_CMD = {
     "BaseModel": BaseModel,
-    "User": User  # Add this line to include User
+    "User": User
 }
 
 class HBNBCommand(cmd.Cmd):
     """
-    This class defines the command interpreter.
+    Esta class define el comando interprete
     """
     prompt = '(hbnb) '
 
     def emptyline(self):
         """
-        Do nothing on an empty line + ENTER.
+        No hacer nada , pass.
         """
         pass
 
     def do_quit(self, arg):
         """
-        Quit command to exit the program.
+        Salir del comando para salir del programa.
         """
         return True
 
     def help_quit(self):
         """
-        Help message for the quit command.
+        Mensaje de ayuda para salir del programa.
         """
         print("Quit command to exit the program")
 
     def do_EOF(self, arg):
         """
-        Handles the EOF signal to exit the program.
+        Maneja la señal EOF para salir del programa.
         """
         print()
         return True
 
     def help_EOF(self):
         """
-        Help message for the EOF signal.
+        Mensaje de ayuda para la señal EOF.
         """
         print("EOF signal to exit the program")
 
     def do_create(self, arg):
         """
-        Create command to create a new instance of a model.
+        Crear comando para crear una nueva instancia.
 
-        Usage: create <class name>
+        Uso: crear <nombre de clase>
         """
         if not arg:
             print("** class name missing **")
@@ -72,9 +70,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """
-        Show command to display the string representation of an instance.
+        Mostrar comando para la representación de cadena de una instancia.
 
-        Usage: show <class name> <id>
+        Uso: mostrar <nombre de clase> <id>
         """
         if not arg:
             print("** class name missing **")
@@ -98,9 +96,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """
-        Destroy command to delete an instance.
+        Comando Destruir para eliminar una instancia.
 
-        Usage: destroy <class name> <id>
+        Uso: destruir <nombre de clase> <id>
         """
         if not arg:
             print("** class name missing **")
@@ -125,9 +123,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """
-        All command to display all instances.
+        Comandos para mostrar todas las instancias.
 
-        Usage: all [class name]
+        Uso: todos [nombre de clase]
         """
         objs = models.storage.all()
         if not arg:
@@ -142,9 +140,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        Update command to modify an instance.
+        Comando de actualización para modificar una instancia.
 
-        Usage: update <class name> <id> <attribute name> <attribute value>
+        Uso: actualizar <nombre de clase> <id> <nombre de atributo> <valor de atributo>
         """
         if not arg:
             print("** class name missing **")

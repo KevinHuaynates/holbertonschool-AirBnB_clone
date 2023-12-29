@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module contains the BaseModel class for the AirBnB project.
+Este módulo contiene la clase BaseModel para el proyecto AirBnB.
 """
 
 import uuid
@@ -9,14 +9,13 @@ from models.engine.file_storage import FileStorage
 
 class BaseModel:
     """
-    This class defines the BaseModel.
+    Class define BaseModel.
     """
 
     def __init__(self, *args, **kwargs):
         """
-        Initializes a new instance of BaseModel.
+        Inicia una nueva instancia de BaseModel.
 
-        If kwargs is not empty, updates the instance with the key/value pairs.
         """
         if kwargs:
             for key, value in kwargs.items():
@@ -33,20 +32,20 @@ class BaseModel:
 
     def __str__(self):
         """
-        Returns the string representation of the object.
+        Return el string representacion del objeto.
         """
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
-        Updates the attribute updated_at with the current datetime.
+        Update el attribute updated_at con la fecha y hora actual.
         """
         self.updated_at = datetime.now()
         FileStorage.new(self)
 
     def to_dict(self):
         """
-        Returns a dictionary containing all keys/values of __dict__.
+        Returns el dictionary que contiene keys/values de __dict__.
         """
         obj_dict = dict(self.__dict__)
         obj_dict['__class__'] = self.__class__.__name__

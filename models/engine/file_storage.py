@@ -1,32 +1,32 @@
 #!/usr/bin/python3
-"""This module defines a class FileStorage."""
+"""Module define a class FileStorage."""
 import json
 from os.path import isfile
 from models.user import User
 from ..models.base_model import BaseModel
 
 class FileStorage:
-    """Serializes instances to a JSON file and deserializes JSON file to instances."""
+    """Serializa instancias en un archivo JSON y deserializa el archivo JSON en instancias"""
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """Returns the dictionary __objects."""
+        """Returns dictionary __objects."""
         return FileStorage.__objects
 
     def new(self, obj):
-        """Sets in __objects the obj with key <obj class name>.id."""
+        """Establece en __objects el obj con la clave <nombre de clase de obj>.id."""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """Serializes __objects to the JSON file (path: __file_path)."""
+        """Serializa __objetos al archivo JSON (ruta: __file_path)."""
         serialized_objects = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
         with open(FileStorage.__file_path, 'w', encoding='utf-8') as file:
             json.dump(serialized_objects, file)
 
     def reload(self):
-        """Deserializes the JSON file to __objects."""
+        """Deserializa JSON file a __objects."""
         try:
             from ..models.base_model import BaseModel
             import models
@@ -44,6 +44,6 @@ class FileStorage:
 
     HBNB_MGMT = {
         "BaseModel": BaseModel,
-        "User": User  # Add this line to include User
+        "User": User
     }
 
