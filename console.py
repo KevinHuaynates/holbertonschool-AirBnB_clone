@@ -5,6 +5,10 @@ Module : contains the entry point of the command interpreter.
 
 import cmd
 
+"""
+This module contains the entry point of the command interpreter.
+"""
+
 class HBNBCommand(cmd.Cmd):
 """This class defines the command interpreter"""
 
