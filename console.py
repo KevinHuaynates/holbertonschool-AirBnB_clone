@@ -9,7 +9,7 @@ and includes a help command.
 import cmd
 import models
 from models.user import User
-from .base_model import BaseModel
+from models.base_model import BaseModel
 
 HBNB_CMD = {
     "BaseModel": BaseModel,
