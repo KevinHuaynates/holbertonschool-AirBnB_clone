@@ -3,7 +3,7 @@
 import json
 from os.path import isfile
 from models.user import User
-from models.base_model import BaseModel
+from ..models.base_model import BaseModel
 
 class FileStorage:
     """Serializes instances to a JSON file and deserializes JSON file to instances."""
@@ -28,7 +28,7 @@ class FileStorage:
     def reload(self):
         """Deserializes the JSON file to __objects."""
         try:
-            from models.base_model import BaseModel
+            from ..models.base_model import BaseModel
             import models
             if isfile(FileStorage.__file_path):
                 with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
