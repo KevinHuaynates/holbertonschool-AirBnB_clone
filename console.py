@@ -8,12 +8,18 @@ and includes a help command.
 
 import cmd
 import models
+from models.user import User
+
+
+HBNB_CMD = {
+    "BaseModel": BaseModel,
+    "User": User  # Add this line to include User
+}
 
 class HBNBCommand(cmd.Cmd):
     """
     This class defines the command interpreter.
     """
-
     prompt = '(hbnb) '
 
     def emptyline(self):

@@ -2,6 +2,7 @@
 """This module defines a class FileStorage."""
 import json
 from os.path import isfile
+from models.user import User
 
 class FileStorage:
     """Serializes instances to a JSON file and deserializes JSON file to instances."""
@@ -39,3 +40,9 @@ class FileStorage:
                         self.__objects[key] = cls(**value)
         except (FileNotFoundError, ImportError, KeyError):
             pass
+
+    HBNB_MGMT = {
+        "BaseModel": BaseModel,
+        "User": User  # Add this line to include User
+    }
+
