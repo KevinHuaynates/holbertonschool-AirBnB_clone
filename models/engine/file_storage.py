@@ -42,8 +42,8 @@ class FileStorage:
         except (FileNotFoundError, ImportError, KeyError):
             pass
 
-    HBNB_MGMT = {
-        "BaseModel": BaseModel,
-        "User": User  # Add this line to include User
-    }
+HBNB_MGMT = {
+    "BaseModel": BaseModel,
+    "User": User  # Add this line to include User
+}
 
