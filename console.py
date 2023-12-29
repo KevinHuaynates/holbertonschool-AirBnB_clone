@@ -3,23 +3,28 @@
 This module contains the HBNBCommand class, a command interpreter for the AirBnB project.
 
 It provides a custom prompt, handles quit and EOF commands to exit the console,
-and includes a help command.
+and includes commands to create, show, destroy, update, and list instances.
 """
-import cmd
-from models import storage
-from models.base_model import BaseModel
 
-"""
-This module contains the entry point of the command interpreter.
-"""
+import cmd
+import shlex
+from models.base_model import BaseModel
+from models import storage
+
+
+classes = {"BaseModel": BaseModel}
+
 
 class HBNBCommand(cmd.Cmd):
-    """This class defines the command interpreter"""
+    """
+    This class defines the command interpreter.
+    """
 
     prompt = '(hbnb) '
 
     def emptyline(self):
-        """Do nothing on an empty line + ENTER.
+        """
+        Do nothing on an empty line + ENTER.
         """
         pass
 
@@ -65,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints the string representation of an instance based on the class name and id.
         """
-        args = arg.split()
+        args = shlex.split(arg)
         if not args:
             print("** class name missing **")
         else:
@@ -75,9 +80,7 @@ class HBNBCommand(cmd.Cmd):
             elif len(args) < 2:
                 print("** instance id missing **")
             else:
-                instance_id = ' '.join(args[1:])
-                # Remove quotes around the instance ID if they exist
-                instance_id = instance_id.strip('"')
+                instance_id = args[1]
                 key = "{}.{}".format(class_name, instance_id)
                 if key in storage.all():
                     print(storage.all()[key])
@@ -88,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Deletes an instance based on the class name and id (save the change into the JSON file).
         """
-        args = arg.split()
+        args = shlex.split(arg)
         if not args:
             print("** class name missing **")
         else:
@@ -98,9 +101,7 @@ class HBNBCommand(cmd.Cmd):
             elif len(args) < 2:
                 print("** instance id missing **")
             else:
-                instance_id = ' '.join(args[1:])
-                # Remove quotes around the instance ID if they exist
-                instance_id = instance_id.strip('"')
+                instance_id = args[1]
                 key = "{}.{}".format(class_name, instance_id)
                 if key in storage.all():
                     del storage.all()[key]
@@ -121,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file).
         """
-        args = arg.split()
+        args = shlex.split(arg)
         if not args:
             print("** class name missing **")
         else:
@@ -132,8 +133,6 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             else:
                 instance_id = args[1]
-                # Remove quotes around the instance ID if they exist
-                instance_id = instance_id.strip('"')
                 key = "{}.{}".format(class_name, instance_id)
                 if key not in storage.all():
                     print("** no instance found **")
@@ -143,7 +142,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** value missing **")
                 else:
                     attribute_name = args[2]
-                    attribute_value = args[3].strip('"')
+                    attribute_value = args[3]
                     obj = storage.all()[key]
                     setattr(obj, attribute_name, attribute_value)
                     obj.save()
