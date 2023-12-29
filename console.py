@@ -81,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         args = arg.split()
-        if args[0] not in models.classes:
+        if args[0] not in HBNB_CMD:
             print("** class doesn't exist **")
             return
 
@@ -107,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         args = arg.split()
-        if args[0] not in models.classes:
+        if args[0] not in HBNB_CMD:
             print("** class doesn't exist **")
             return
 
@@ -134,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
             print("[{}]".format(', '.join(str(obj) for obj in objs.values())))
             return
 
-        if arg not in models.classes:
+        if arg not in HBNB_CMD:
             print("** class doesn't exist **")
             return
 
@@ -151,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         args = arg.split()
-        if args[0] not in models.classes:
+        if args[0] not in HBNB_CMD:
             print("** class doesn't exist **")
             return
 
@@ -172,10 +172,16 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
 
-        obj = models.storage.all()[key]
-        setattr(obj, args[2], args[3])
-        models.storage.save()
+        obj = models.storage.all()
+        if not arg:
+            print("[{}]".format(', '.join(str(obj) for obj in objs.values())))
+            return
 
+        if arg not in HBNB_CMD:
+            print("** class doesn't exist **")
+            return
+        print("[{}]".format(', '.join(str(obj) for key, obj in objs.items() if arg in key)))
+        
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
 
