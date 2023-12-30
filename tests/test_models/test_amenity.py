@@ -1,11 +1,16 @@
 import unittest
 from models.amenity import Amenity
+from datetime import datetime
 
 
 class TestAmenity(unittest.TestCase):
-    """Test cases for the Amenity class."""
-
-    def test_create_instance(self):
-        """Test creating an instance of Amenity."""
+    def test_init(self):
         amenity = Amenity()
         self.assertIsInstance(amenity, Amenity)
+        self.assertIsNotNone(amenity.id)
+        self.assertIsInstance(amenity.created_at, datetime)
+        self.assertIsInstance(amenity.updated_at, datetime)
+
+
+if __name__ == '__main__':
+    unittest.main()

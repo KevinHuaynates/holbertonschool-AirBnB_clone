@@ -1,11 +1,16 @@
 import unittest
 from models.review import Review
+from datetime import datetime
 
 
 class TestReview(unittest.TestCase):
-    """Test cases for the Review class."""
-
-    def test_create_instance(self):
-        """Test creating an instance of Review."""
+    def test_init(self):
         review = Review()
         self.assertIsInstance(review, Review)
+        self.assertIsNotNone(review.id)
+        self.assertIsInstance(review.created_at, datetime)
+        self.assertIsInstance(review.updated_at, datetime)
+
+
+if __name__ == '__main__':
+    unittest.main()
