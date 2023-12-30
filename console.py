@@ -1,17 +1,26 @@
-# console.py
+#!/usr/bin/python3
+"""
+AirBnB Clone Console Module
 
-import os
-import sys
+This module provides an interactive console for managing AirBnB objects.
+"""
 
+import cmd
 
-class Console:
-    def __init__(self):
-        pass
+class HBNBCommand(cmd.Cmd):
+    """Command interpreter class."""
+    prompt = '(hbnb) '
 
-    def run(self):
-        print("Hello, world!")
+    def do_help(self, arg):
+        """Prints a list of available commands."""
+        print("Available commands: help, quit")
 
-if __name__ == "__main__":
-    console = Console()
-    console.run()
+    def do_quit(self, arg):
+        """Exits the console."""
+        return True
+
+    # Agrega aquí la implementación de otros comandos según tus necesidades
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
 
