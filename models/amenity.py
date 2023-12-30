@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""
-Module para Amenity class.
-"""
-
+"""Amenity module"""
 from models.base_model import BaseModel
 
-class Amenity(BaseModel):
-    """Amenity class que hereda de BaseModel.""" 
-    name = ""
 
+class Amenity(BaseModel):
+    """Amenity class."""
+    def __init__(self, *args, **kwargs):
+        """Initialization method."""
+        pass

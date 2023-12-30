@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""
-Module para State class.
-"""
-
+"""State module"""
 from models.base_model import BaseModel
 
-class State(BaseModel):
-    """State class que hereda BaseModel."""
-    name = ""
 
+class State(BaseModel):
+    """State class."""
+    def __init__(self, *args, **kwargs):
+        """Initialization method."""
+        pass

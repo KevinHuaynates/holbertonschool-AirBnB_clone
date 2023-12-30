@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""Module para User class."""
+"""User module"""
 from models.base_model import BaseModel
 
-class User(BaseModel):
-    """User class que hereda BaseModel."""
-    email = ""
-    password = ""
-    first_name = ""
-    last_name = ""
 
+class User(BaseModel):
+    """User class."""
+    def __init__(self, *args, **kwargs):
+        """Initialization method."""
+        pass

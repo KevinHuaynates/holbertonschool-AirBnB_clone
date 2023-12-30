@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""
-Module para City class.
-"""
-
+"""City module"""
 from models.base_model import BaseModel
 
-class City(BaseModel):
-    """City class es inherente de BaseModel."""
-    state_id = ""
-    name = ""
 
+class City(BaseModel):
+    """City class."""
+    def __init__(self, *args, **kwargs):
+        """Initialization method."""
+        pass

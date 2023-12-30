@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-"""
-Module para Review class.
-"""
-
+"""Review module"""
 from models.base_model import BaseModel
 
-class Review(BaseModel):
-    """Class Review que hereda BaseModel"""
-    place_id = ""
-    user_id = ""
-    text = ""
 
+class Review(BaseModel):
+    """Review class."""
+    def __init__(self, *args, **kwargs):
+        """Initialization method."""
+        pass
