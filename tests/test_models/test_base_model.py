@@ -13,6 +13,7 @@ class TestBaseModel(unittest.TestCase):
         model = BaseModel()
         model.save()
         self.assertIsNotNone(model.updated_at)
+        self.assertTrue(hasattr(model, 'id'))
 
 
 if __name__ == '__main__':
