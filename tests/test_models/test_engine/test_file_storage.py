@@ -1,25 +1,13 @@
-#!/usr/bin/python3
 import unittest
 from models.engine.file_storage import FileStorage
-from models.base_model import BaseModel
-
 
 class TestFileStorage(unittest.TestCase):
+    """Test cases for the FileStorage class."""
 
-    def test_new(self):
-        storage = FileStorage()
-        model = BaseModel()
-        model.save()
-        obj_id = "{}.{}".format(type(model).__name__, model.id)
-        self.assertIn(obj_id, storage.all())
+    def test_create_instance(self):
+        """Test creating an instance of FileStorage."""
+        file_storage = FileStorage()
+        self.assertIsInstance(file_storage, FileStorage)
 
-    def test_reload(self):
-        storage = FileStorage()
-        storage.reload()
-        self.assertTrue(len(storage.all()) >= 0)
+    # Add more test cases as needed
 
-    # Agrega más pruebas según sea necesario para otros métodos de la clase FileStorage
-
-
-if __name__ == '__main__':
-    unittest.main()

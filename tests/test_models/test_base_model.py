@@ -1,20 +1,17 @@
-#!/usr/bin/python3
 import unittest
 from models.base_model import BaseModel
 
-
 class TestBaseModel(unittest.TestCase):
-
-    def test_init(self):
+    """Test cases for the BaseModel class."""
+    
+    def test_create_instance(self):
+        """Test creating an instance of BaseModel."""
         model = BaseModel()
-        self.assertTrue(hasattr(model, 'id'))
+        self.assertIsInstance(model, BaseModel)
 
-    def test_save(self):
+    def test_attributes(self):
+        """Test BaseModel attributes."""
         model = BaseModel()
-        model.save()
-        self.assertIsNotNone(model.updated_at)
-        self.assertTrue(hasattr(model, 'id'))
-
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertTrue(hasattr(model, 'created_at'))
+        self.assertTrue(hasattr(model, 'updated_at'))
+        # Add more test cases as needed

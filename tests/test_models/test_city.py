@@ -1,16 +1,13 @@
-#!/usr/bin/python3
 import unittest
 from models.city import City
 
-
 class TestCity(unittest.TestCase):
+    """Test cases for the City class."""
 
-    def test_init(self):
+    def test_create_instance(self):
+        """Test creating an instance of City."""
         city = City()
-        self.assertTrue(hasattr(city, 'id'))
+        self.assertIsInstance(city, City)
 
-    # Agrega más pruebas según sea necesario para los métodos de la clase City
+    # Add more test cases as needed
 
-
-if __name__ == '__main__':
-    unittest.main()

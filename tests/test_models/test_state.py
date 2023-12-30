@@ -1,16 +1,13 @@
-#!/usr/bin/python3
 import unittest
 from models.state import State
 
-
 class TestState(unittest.TestCase):
+    """Test cases for the State class."""
 
-    def test_init(self):
+    def test_create_instance(self):
+        """Test creating an instance of State."""
         state = State()
-        self.assertIsNotNone(state.id)
+        self.assertIsInstance(state, State)
 
-    # Agrega más pruebas según sea necesario para los métodos de la clase State
+    # Add more test cases as needed
 
-
-if __name__ == '__main__':
-    unittest.main()

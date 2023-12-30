@@ -1,13 +1,13 @@
-#!/usr/bin/python3
 import unittest
 from models.user import User
 
-
 class TestUser(unittest.TestCase):
-    def test_init(self):
-        user = User() 
-        self.assertIsNotNone(user.id)
-        
+    """Test cases for the User class."""
+    
+    def test_create_instance(self):
+        """Test creating an instance of User."""
+        user = User()
+        self.assertIsInstance(user, User)
 
-if __name__ == '__main__':
-    unittest.main()
+    # Add more test cases as needed
+

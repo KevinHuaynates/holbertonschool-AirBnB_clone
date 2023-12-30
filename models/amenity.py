@@ -1,10 +1,9 @@
-#!/usr/bin/python3
-"""Amenity module"""
 from models.base_model import BaseModel
 
-
 class Amenity(BaseModel):
-    """Amenity class."""
+    """Class Amenity that inherits from BaseModel."""
     def __init__(self, *args, **kwargs):
-        """Initialization method."""
-        pass
+        """Initialize Amenity instance."""
+        super().__init__(*args, **kwargs)
+        # Add any specific attributes for Amenity here
+

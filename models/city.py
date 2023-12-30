@@ -1,10 +1,9 @@
-#!/usr/bin/python3
-"""City module"""
 from models.base_model import BaseModel
 
-
 class City(BaseModel):
-    """City class."""
+    """Class City that inherits from BaseModel."""
     def __init__(self, *args, **kwargs):
-        """Initialization method."""
-        pass
+        """Initialize City instance."""
+        super().__init__(*args, **kwargs)
+        # Add any specific attributes for City here
+

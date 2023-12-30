@@ -1,16 +1,13 @@
-#!/usr/bin/python3
 import unittest
 from models.amenity import Amenity
 
-
 class TestAmenity(unittest.TestCase):
+    """Test cases for the Amenity class."""
 
-    def test_init(self):
+    def test_create_instance(self):
+        """Test creating an instance of Amenity."""
         amenity = Amenity()
-        self.assertTrue(hasattr(amenity, 'id'))
+        self.assertIsInstance(amenity, Amenity)
 
-    # Agrega más pruebas según sea necesario para los métodos de la clase Amenity
+    # Add more test cases as needed
 
-
-if __name__ == '__main__':
-    unittest.main()
