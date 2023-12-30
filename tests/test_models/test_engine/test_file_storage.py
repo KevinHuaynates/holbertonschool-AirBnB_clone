@@ -8,7 +8,7 @@ class TestFileStorage(unittest.TestCase):
     def test_new(self):
         storage = FileStorage()
         obj = storage.all()
-        self.assertIn("{}.{}".format(type(obj).__name__, obj.id), storage.all())
+        self.assertIn(obj, storage.all())
 
     def test_reload(self):
         storage = FileStorage()
