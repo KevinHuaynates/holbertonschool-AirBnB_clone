@@ -1,21 +1,17 @@
-#!/usr/bin/python3
-"""Console module"""
-import cmd
+# console.py
+
+import os
+import sys
 
 
-class HBNBCommand(cmd.Cmd):
-    """Command interpreter for AirBnB clone."""
-    prompt = "(hbnb) "
+class Console:
+    def __init__(self):
+        pass
 
-    def do_quit(self, arg):
-        """Quit command to exit the program."""
-        return True
-
-    def do_EOF(self, arg):
-        """Exit the program at EOF."""
-        print()
-        return True
-
+    def run(self):
+        print("Hello, world!")
 
 if __name__ == "__main__":
-    HBNBCommand().cmdloop()
+    console = Console()
+    console.run()
+
