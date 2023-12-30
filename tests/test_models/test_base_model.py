@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
@@ -13,9 +14,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         obj = BaseModel()
-        updated_at_before = obj.updated_at
         obj.save()
-        self.assertNotEqual(obj.updated_at, updated_at_before)
+        self.assertNotEqual(obj.updated_at, obj.created_at)
 
     def test_to_dict(self):
         obj = BaseModel()
