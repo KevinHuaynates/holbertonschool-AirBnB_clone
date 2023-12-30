@@ -12,7 +12,7 @@ class TestBaseModel(unittest.TestCase):
     def test_save(self):
         model = BaseModel()
         model.save()
-        self.assertTrue(hasattr(model, 'updated_at'))
+        self.assertIsNotNone(model.updated_at)
 
 
 if __name__ == '__main__':

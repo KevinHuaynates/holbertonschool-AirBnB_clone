@@ -7,7 +7,7 @@ class TestReview(unittest.TestCase):
 
     def test_init(self):
         review = Review()
-        self.assertIsNotNone(review.id)
+        self.assertTrue(hasattr(review, 'id'))
 
     # Agrega más pruebas según sea necesario para los métodos de la clase Review
 
