@@ -41,3 +41,13 @@ class BaseModel:
         obj_dict['updated_at'] = self.updated_at.isoformat()
         return obj_dict
 
+# Agrega el código adicional necesario para permitir la creación de instancias desde un diccionario
+    def from_dict(cls, data):
+        """Creates an instance from a dictionary representation."""
+        if '__class__' in data:
+            del data['__class__']
+        if 'created_at' in data:
+            data['created_at'] = datetime.strptime(data['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
+        if 'updated_at' in data:
+            data['updated_at'] = datetime.strptime(data['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+        return cls(**data)
