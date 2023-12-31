@@ -18,6 +18,10 @@ class HBNBCommand(cmd.Cmd):
         print("")
         return True
 
+    def emptyline(self):
+        """Called when an empty line is entered"""
+        pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
