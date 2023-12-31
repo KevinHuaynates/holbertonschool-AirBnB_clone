@@ -1,5 +1,4 @@
 # models/base_model.py
-from models import storage
 import uuid
 from datetime import datetime
 
@@ -27,3 +26,4 @@ class BaseModel:
     def save(self):
         self.updated_at = datetime.now()
         storage.save()
+from models import storage
