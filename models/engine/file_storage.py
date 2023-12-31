@@ -1,7 +1,10 @@
+# models/engine/file_storage.py
+
 import json
+from models.base_model import BaseModel
 
 class FileStorage:
-    __file_path = "file.json"  # Asegúrate de que el nombre del archivo sea el correcto
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
