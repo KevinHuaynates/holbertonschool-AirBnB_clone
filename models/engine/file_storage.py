@@ -1,5 +1,3 @@
-"""File Storage Module"""
-
 import json
 from models.base_model import BaseModel
 
@@ -37,6 +35,6 @@ class FileStorage:
                     class_ = globals()[class_name]  # Access the class globally
                     obj_instance = class_(**value)
                     self.__objects[key] = obj_instance
-        except FileNotFoundError:
-            pass  # No exception should be raised if the file doesn't exist
+        except Exception as e:
+            print(f"Error reloading data: {e}")
 
