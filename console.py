@@ -6,6 +6,7 @@ from models import storage
 from models.base_model import BaseModel
 from datetime import datetime
 
+
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class"""
 
@@ -91,7 +92,12 @@ class HBNBCommand(cmd.Cmd):
             if args[0] not in storage.classes:
                 print("** class doesn't exist **")
             else:
-                print([str(obj) for key, obj in all_objects.items() if key.startswith(args[0])])
+                filtered_objects = (
+                    str(obj)
+                    for key, obj in all_objects.items()
+                    if key.startswith(args[0])
+                )
+                print(filtered_objects)
 
     def do_update(self, arg):
         """Update an instance based on the class name and id"""
@@ -131,6 +137,6 @@ class HBNBCommand(cmd.Cmd):
         setattr(instance, attribute_name, attribute_value)
         instance.save()
 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
