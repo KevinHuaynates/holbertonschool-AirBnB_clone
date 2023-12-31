@@ -40,19 +40,3 @@ class FileStorage:
         except FileNotFoundError:
             pass  # No exception should be raised if the file doesn't exist
 
-    @property
-    def _FileStorage__file_path(self):
-        return self.__file_path
-
-    @_FileStorage__file_path.setter
-    def _FileStorage__file_path(self, value):
-        self.__file_path = value
-
-    @property
-    def _FileStorage__objects(self):
-        return self.__objects
-
-    @_FileStorage__objects.setter
-    def _FileStorage__objects(self, value):
-        self.__objects = value
-
