@@ -52,10 +52,12 @@ class HBNBCommand(cmd.Cmd):
             return
         key = "{}.{}".format(args[0], args[1])
         all_objects = storage.all()
-        if key in all_objects:
-            print(all_objects[key])
-        else:
+        if key not in all_objects:
             print("** no instance found **")
+            return
+
+        instance = all_objects[key]
+        print(instance)
 
     def do_destroy(self, arg):
         """Delete an instance based on the class name and id"""
