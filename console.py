@@ -117,7 +117,16 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
         instance = all_objects[key]
-        setattr(instance, args[2], eval(args[3]))
+        attribute_name = args[2]
+        attribute_value = args[3]
+        attribute_type = type(getattr(instance, attribute_name, None))
+        try:
+            attribute_value = attribute_type(attribute_value)
+
+        except ValueError:
+            pass
+
+        setattr(instance, attribute_name, attribute_value)
         instance.save()
 
 if __name__ == '__main__':
